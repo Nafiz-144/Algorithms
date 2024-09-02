@@ -1,0 +1,24 @@
+Binary Search Algorithm is a searching algorithm used in a sorted
+array by repeatedly dividing the search interval in half. The idea 
+of binary search is to use the information that the array is sorted 
+and reduce the time complexity to O(log N). 
+Binary search work on monotonic functions:
+monotonic functions is like which maintenance a given order.
+example;
+1 2 3 4 (increasing array)
+Binary search using also on a predicate functions:
+example: true false
+ binary search algorithm start:
+
+ 2 3 4 5 6 7
+ search space
+ 0 to 5
+ mid search space ->0-5
+ mid=2
+ 3->5
+ mid=4
+ space 3 - 3
+ ==5
+ 
+
+
