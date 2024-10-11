@@ -12,12 +12,16 @@ int main()
         }
         for (int j = i + 1; j < n; j++)
         {
-            cout << "+";
+            cout << " ";
         }
 
         for (int j = n + i + 1; j < n * 2; j++)
         {
-            cout << "#";
+            cout << " ";
+        }
+        for (int j = (n * 2) - 1; j < i + 1; j++)
+        {
+            cout << "*";
         }
         cout << endl;
     }
