@@ -14,7 +14,7 @@ int factorial(int n)
 
 int main()
 {
-    factorial(5);
+    cout << "N Number factorial:" << factorial(5);
 
     return 0;
 }

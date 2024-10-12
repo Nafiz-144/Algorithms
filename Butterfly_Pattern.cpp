@@ -1,29 +1,49 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
 int main()
 {
-    int n = 4;
+    // Number of rows
+    int N = 5;
 
-    for (int i = 0; i < n; i++)
+    // Variables to store number of spaces and stars
+    int spaces = 2 * N - 1;
+    int stars = 0;
+
+    // The outer loop will run for (2 * N - 1) times
+    for (int i = 1; i <= 2 * N - 1; i++)
     {
-        for (int j = 0; j < i + 1; j++)
+        // Upper half of the butterfly
+        if (i <= N)
+        {
+            spaces = spaces - 2;
+            stars++;
+        }
+        // Lower half of the butterfly
+        else
+        {
+            spaces = spaces + 2;
+            stars--;
+        }
+        // Print stars
+        for (int j = 1; j <= stars; j++)
         {
             cout << "*";
         }
-        for (int j = i + 1; j < n; j++)
+        // Print spaces
+        for (int j = 1; j <= spaces; j++)
         {
             cout << " ";
         }
-
-        for (int j = n + i + 1; j < n * 2; j++)
+        // Print stars
+        for (int j = 1; j <= stars; j++)
         {
-            cout << " ";
+            if (j != N)
+            {
+                cout << "*";
+            }
         }
-        for (int j = (n * 2) - 1; j < i + 1; j++)
-        {
-            cout << "*";
-        }
-        cout << endl;
+        cout << "\n";
     }
 
     return 0;
