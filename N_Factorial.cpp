@@ -14,7 +14,8 @@ int factorial(int n)
 
 int main()
 {
-    cout << "N Number factorial:" << factorial(5);
+    cout << "N Number factorial:" << factorial(5) << "\n";
+    cout << "N Number factorial:" << factorial(75);
 
     return 0;
 }
