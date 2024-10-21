@@ -1,23 +1,57 @@
-#include <bits/stdc++.h>
+#include <iostream>
 using namespace std;
+
 int main()
 {
-    int n = 10;
-    for (int i = 0; i < n; i++)
+    int n;
+    cin >> n;
+    if (n > 1)
     {
-        for (int j = 0; j < n - i - 1; j++)
+        for (int i = 1; i <=(5 + n) - 1; i++)
         {
-            cout << " ";
+            for (int j = i + 1; j < n + 5; j++)
+                cout << " ";
+            for (int j = 1; j <= (2 * i - 1); j++)
+                cout << "*";
+            cout << endl;
         }
-        for (int j = 1; j <= i + 1; j++)
+
+        for (int i = 1; i <= 5; i++)
         {
-            cout << j;
+            for (int j = 1; j <= 5; j++)
+            {
+                cout << " ";
+            }
+            for (int j = 1; j <= n; j++)
+            {
+                cout << "*";
+            }
+            cout << endl;
         }
-        for (int j = i; j >= 1; j--)
+    }
+    else
+    {
+        for (int i = 1; i <= 5 + n; i++)
         {
-            cout << j;
+            for (int j = i; j < n + 5; j++)
+                cout << " ";
+            for (int j = 1; j <= (2 * i - 1); j++)
+                cout << "*";
+            cout << endl;
         }
-        cout << endl;
+
+        for (int i = 1; i <= n + 4; i++)
+        {
+            for (int j = 1; j <= 5; j++)
+            {
+                cout << " ";
+            }
+            for (int j = 1; j <= n; j++)
+            {
+                cout << "*";
+            }
+            cout << endl;
+        }
     }
 
     return 0;
