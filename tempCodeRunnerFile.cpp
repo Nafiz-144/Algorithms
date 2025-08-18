@@ -12,18 +12,7 @@ public:
         left = right = NULL;
     }
 };
-void preOrder(Node *root)
-{
 
-    if (root == NULL)
-    {
-        return;
-    }
-
-    cout << root->data << " ";
-    preOrder(root->left);
-    preOrder(root->right);
-}
 static int indx = -1;
 Node *bulidtree(vector<int> preorder)
 {
@@ -39,12 +28,91 @@ Node *bulidtree(vector<int> preorder)
     root->right = bulidtree(preorder);
     return root;
 }
+// Preorder Traversal
+
+void preOrder(Node *root)
+{
+
+    if (root == NULL)
+    {
+        return;
+    }
+
+    cout << root->data << " ";
+    preOrder(root->left);
+    preOrder(root->right);
+}
+// Inorder Traversal
+void inOrder(Node *root)
+{
+    if (root == NULL)
+    {
+        return;
+    }
+    inOrder(root->left);
+    cout << root->data << " ";
+    inOrder(root->right);
+}
+// PostOrder
+void postOrder(Node *root)
+{
+
+    if (root == NULL)
+    {
+        return;
+    }
+    postOrder(root->left);
+    postOrder(root->right);
+    cout << root->data << " ";
+}
+// level order
+void levelOrder(Node *root)
+{
+    queue<Node *> q;
+    q.push(root);
+    while (q.size() > 0)
+    {
+        Node *curr = q.front();
+        q.pop();
+        q.push(NULL);
+        if (curr == NULL)
+        {
+            if (!q.empty())
+            {
+                cout << endl;
+                q.push(NULL);
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
+
+        cout << curr->data << " ";
+        if (curr->left != NULL)
+        {
+            q.push(curr->left);
+        }
+        if (curr->right != NULL)
+        {
+            q.push(curr->right);
+        }
+    }
+    cout << endl;
+}
 
 int main()
 {
     vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
     Node *root = bulidtree(preorder);
     preOrder(root);
+    cout << endl;
+    inOrder(root);
+    cout << endl;
+    postOrder(root);
+    cout << endl;
+    levelOrder(root);
     cout << endl;
 
     return 0;
