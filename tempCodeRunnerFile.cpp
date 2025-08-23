@@ -68,52 +68,91 @@ void postOrder(Node *root)
 // level order
 void levelOrder(Node *root)
 {
+    if (root == NULL)
+    {
+        return;
+    }
+
     queue<Node *> q;
     q.push(root);
-    while (q.size() > 0)
+    q.push(NULL); // Marker for the end of the first level
+
+    while (!q.empty())
     {
         Node *curr = q.front();
         q.pop();
-        q.push(NULL);
+
         if (curr == NULL)
         {
+            // End of a level
             if (!q.empty())
             {
-                cout << endl;
+                // If there are more nodes, push a new marker
                 q.push(NULL);
-                continue;
+                cout << endl;
             }
-            else
+        }
+        else
+        {
+            cout << curr->data << " ";
+            if (curr->left != NULL)
             {
-                break;
+                q.push(curr->left);
             }
-        }
-
-        cout << curr->data << " ";
-        if (curr->left != NULL)
-        {
-            q.push(curr->left);
-        }
-        if (curr->right != NULL)
-        {
-            q.push(curr->right);
+            if (curr->right != NULL)
+            {
+                q.push(curr->right);
+            }
         }
     }
-    cout << endl;
+}
+// top view of Binary Tree
+void topview(Node *root)
+{
+    queue<pair<Node *, int>> q; //(node.HD)
+    map<int, int> m;
+
+    q.push({root, 0});
+
+    while (q.size() > 0)
+    {
+        Node *curr = q.front().first;
+        int currHD = q.front().second;
+        q.pop();
+        if (m.find(currHD) == m.end())
+        {
+            m[currHD] = curr->data;
+        }
+        if (curr->left != NULL)
+        {
+            q.push({curr->left, currHD - 1});
+        }
+
+        if (curr->right != NULL)
+        {
+            q.push({curr->right, currHD + 1});
+        }
+
+        for (auto it : m)
+        {
+            cout << it.second << " ";
+        }
+        cout << endl;
+    }
 }
 
 int main()
 {
     vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
     Node *root = bulidtree(preorder);
-    preOrder(root);
-    cout << endl;
-    inOrder(root);
-    cout << endl;
-    postOrder(root);
-    cout << endl;
-    levelOrder(root);
-    cout << endl;
-
+    /* preOrder(root);
+     cout << endl;
+     inOrder(root);
+     cout << endl;
+     postOrder(root);
+     cout << endl;
+     levelOrder(root);
+     cout << endl;*/
+    topview(root);
     return 0;
 }
