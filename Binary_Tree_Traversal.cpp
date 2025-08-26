@@ -68,43 +68,39 @@ void postOrder(Node *root)
 // level order
 void levelOrder(Node *root)
 {
-    if (root == NULL)
-    {
-        return;
-    }
-
     queue<Node *> q;
     q.push(root);
-    q.push(NULL); // Marker for the end of the first level
-
-    while (!q.empty())
+    q.push(NULL);
+    while (q.size() > 0)
     {
         Node *curr = q.front();
         q.pop();
-
         if (curr == NULL)
         {
-            // End of a level
             if (!q.empty())
             {
-                // If there are more nodes, push a new marker
-                q.push(NULL);
                 cout << endl;
+                q.push(NULL);
+                continue;
+            }
+            else
+            {
+                break;
             }
         }
-        else
+
+        cout << curr->data << " ";
+
+        if (curr->left != NULL)
         {
-            cout << curr->data << " ";
-            if (curr->left != NULL)
-            {
-                q.push(curr->left);
-            }
-            if (curr->right != NULL)
-            {
-                q.push(curr->right);
-            }
+            q.push(curr->left);
+        }
+        else if (curr->right != NULL)
+        {
+            q.push(curr->right);
         }
     }
+    cout << endl;
 }
 // top view of Binary Tree
 void topview(Node *root)
@@ -150,9 +146,9 @@ int main()
      inOrder(root);
      cout << endl;
      postOrder(root);
-     cout << endl;
-     levelOrder(root);
      cout << endl;*/
+    levelOrder(root);
+
     topview(root);
     return 0;
 }
