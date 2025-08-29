@@ -70,10 +70,24 @@ void levelOrder(Node *root)
 {
     queue<Node *> q;
     q.push(root);
+    q.push(NULL);
     while (q.size() > 0)
     {
         Node *curr = q.front();
         q.pop();
+        if (curr == NULL)
+        {
+            if (!q.empty())
+            {
+                cout << endl;
+                q.push(NULL);
+                continue;
+            }
+            else
+            {
+                break;
+            }
+        }
 
         cout << curr->data << " ";
 
@@ -125,16 +139,17 @@ void topview(Node *root)
 
 int main()
 {
-    vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
+    vector<int> preorder = {1, 2, 0, 0, 3, 4, -1, -1, 5, -1, -1};
     Node *root = bulidtree(preorder);
-    /* preOrder(root);
-     cout << endl;
-     inOrder(root);
-     cout << endl;
-     postOrder(root);
-     cout << endl;*/
-    levelOrder(root);
+    preOrder(root);
     cout << endl;
+    inOrder(root);
+    cout << endl;
+    postOrder(root);
+    cout << endl;
+    levelOrder(root);
+
     topview(root);
+
     return 0;
 }

@@ -141,14 +141,15 @@ int main()
 {
     vector<int> preorder = {1, 2, -1, -1, 3, 4, -1, -1, 5, -1, -1};
     Node *root = bulidtree(preorder);
-    /* preOrder(root);
-     cout << endl;
-     inOrder(root);
-     cout << endl;
-     postOrder(root);
-     cout << endl;*/
+    preOrder(root);
+    cout << endl;
+    inOrder(root);
+    cout << endl;
+    postOrder(root);
+    cout << endl;
     levelOrder(root);
 
     topview(root);
+
     return 0;
 }
