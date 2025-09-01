@@ -9,6 +9,10 @@ int fun(int i)
     {
         return 0;
     }
+    if (dp[i] != -1)
+    {
+        return dp[i];
+    }
 
     int cost = INT_MAX;
 
@@ -18,7 +22,7 @@ int fun(int i)
         cost = min(cost, fun(i - 2) + abs(h[i] - h[i - 1]));
     }
 
-    return cost;
+    return dp[i] = cost;
 }
 
 int main()
